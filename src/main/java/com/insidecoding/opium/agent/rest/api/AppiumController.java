@@ -2,6 +2,8 @@ package com.insidecoding.opium.agent.rest.api;
 
 import java.io.IOException;
 
+import javax.validation.constraints.Pattern;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +31,11 @@ public class AppiumController {
   private AppiumService appiumService;
 
   @RequestMapping(value = "/appium/{port}", method = RequestMethod.DELETE)
-  public ResponseEntity<String> stop(@PathVariable String port) {
+  public ResponseEntity<String> stop(@PathVariable @Validated int port) {
     String result = "";
-    if (!StringUtils.isEmpty(port)) {
+    if (port != 0) {
       try {
-        result = this.appiumService.stopServer(port);
+        result = this.appiumService.stopServer(String.valueOf(port));
         LOG.info("Command completed successful: " + result);
       } catch (IOException e) {
         LOG.error("Could not stop service on port: " + port, e);
@@ -65,6 +68,7 @@ public class AppiumController {
 
   static class Appium {
 
+    @Pattern(regexp = "\\d+")
     private String command;
 
     @JsonCreator

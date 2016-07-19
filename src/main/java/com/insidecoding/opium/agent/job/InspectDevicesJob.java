@@ -36,9 +36,8 @@ public class InspectDevicesJob implements Runnable {
       List<Device> devices = this.getDevices(devicesListCommandOut);
       LOG.info("Got devices: " + devices);
 
-      if (devices.size() > 0) {
-        netService.sendToMaster(devices);
-      }
+      netService.sendToMaster(devices);
+
     } catch (Exception e) {
       LOG.warn("Something went wrong while getting devices: " + e.getMessage());
     }
