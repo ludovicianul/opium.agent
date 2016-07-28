@@ -7,9 +7,12 @@ import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class OsCommand {
   private static final int DEFAULT_PROC_TIMEOUT = 10 * 1000;
+  private static final Logger LOG = LoggerFactory.getLogger(OsCommand.class);
 
   /**
    * Executes the given command and returns once the given "waitFor" string is found in the command
@@ -26,12 +29,13 @@ public abstract class OsCommand {
   public String executeAndWaitFor(String waitFor, String... commandParams) throws IOException {
     try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
       CommandLine commandLine = new CommandLine(this.getCommand());
-      commandLine.addArguments(commandParams);
+      commandLine.addArguments(commandParams, false);
 
       DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
       DefaultExecutor executor = new DefaultExecutor();
       PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
       executor.setStreamHandler(streamHandler);
+
       executor.execute(commandLine, resultHandler);
 
       try {
