@@ -7,12 +7,9 @@ import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class OsCommand {
   private static final int DEFAULT_PROC_TIMEOUT = 10 * 1000;
-  private static final Logger LOG = LoggerFactory.getLogger(OsCommand.class);
 
   /**
    * Executes the given command and returns once the given "waitFor" string is found in the command
