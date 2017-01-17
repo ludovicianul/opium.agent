@@ -6,6 +6,7 @@ The agent used by [Opium](https://github.com/ludovicianul/opium)
 
 # starting the project
 `java -jar opium-agent.jar -Dmaster=http://IP_OF_HIVE:2020`
+
 By default the project will start on port 2021. If you don't send a `master` address, it will default to `http://localhost:2020/`
 
 # device monitoring
