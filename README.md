@@ -1,5 +1,5 @@
 # opium.agent
-The agent used by Opium
+The agent used by [Opium](https://github.com/ludovicianul/opium)
 
 # building the project 
 `mvn clean package`
