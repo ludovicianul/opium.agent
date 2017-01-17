@@ -14,7 +14,10 @@ Every 10 seconds the agent will monitor for connected Android devices. Once foun
 
 # pre-requisits
 - `adb` needst to be installed on the running host
-- Appium needs to be installed on the running host
+- [Appium](http://appium.io/) needs to be installed on the running host
+
+# os compatibility
+Tested on Windows, Ubuntu and Mac.
 
 # build
 [![Build Status](https://snap-ci.com/ludovicianul/opium.agent/branch/master/build_image)](https://snap-ci.com/ludovicianul/opium.agent/branch/master)
