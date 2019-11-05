@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 @Component("lsof")
 public class LsofCommand extends OsCommand {
 
-  @Override
-  public String getCommand() {
-    return "lsof";
-  }
+    @Override
+    public String getCommand() {
+        return "lsof";
+    }
 
 }

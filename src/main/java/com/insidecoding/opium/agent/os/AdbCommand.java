@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 @Component("adb")
 public class AdbCommand extends OsCommand {
 
-  @Override
-  public String getCommand() {
-    return "adb";
-  }
+    @Override
+    public String getCommand() {
+        return "adb";
+    }
 
 }

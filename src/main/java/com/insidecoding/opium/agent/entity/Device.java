@@ -2,112 +2,125 @@ package com.insidecoding.opium.agent.entity;
 
 /**
  * TODO: Put this in a shared library
- * 
- * @author ludovicianul
  *
+ * @author ludovicianul
  */
 public class Device {
-  public static final String UNAUTHORIZED = "unauthorized";
+    public static final String UNAUTHORIZED = "unauthorized";
 
-  private String ip;
-  private String uid;
-  private String name;
-  private String brand;
-  private String model;
-  private String sdkVersion;
-  private String androidVersion;
-  private String manufacturer;
-  private String type;
+    private String ip;
+    private String uid;
+    private String name;
+    private String brand;
+    private String model;
+    private String sdkVersion;
+    private String osVersion;
+    private String manufacturer;
+    private String type;
+    private DeviceStatus status;
 
-  public String getUid() {
-    return uid;
-  }
 
-  public void setUid(String uid) {
-    this.uid = uid;
-  }
+    public static Device newUnauthorizedDevice() {
+        Device device = new Device();
+        device.osVersion = UNAUTHORIZED;
+        device.sdkVersion = UNAUTHORIZED;
+        device.brand = UNAUTHORIZED;
+        device.name = UNAUTHORIZED;
+        device.model = UNAUTHORIZED;
+        device.manufacturer = UNAUTHORIZED;
+        device.type = UNAUTHORIZED;
 
-  public String getBrand() {
-    return brand;
-  }
+        return device;
+    }
 
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
+    public String getUid() {
+        return uid;
+    }
 
-  public String getModel() {
-    return model;
-  }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
-  public void setModel(String model) {
-    this.model = model;
-  }
+    public String getBrand() {
+        return brand;
+    }
 
-  public String getSdkVersion() {
-    return sdkVersion;
-  }
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-  public void setSdkVersion(String sdkVersion) {
-    this.sdkVersion = sdkVersion;
-  }
+    public String getModel() {
+        return model;
+    }
 
-  public String getAndroidVersion() {
-    return androidVersion;
-  }
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-  public void setAndroidVersion(String androidVersion) {
-    this.androidVersion = androidVersion;
-  }
+    public String getSdkVersion() {
+        return sdkVersion;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setSdkVersion(String sdkVersion) {
+        this.sdkVersion = sdkVersion;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public String getOsVersion() {
+        return osVersion;
+    }
 
-  public String getIp() {
-    return ip;
-  }
+    public void setOsVersion(String osVersion) {
+        this.osVersion = osVersion;
+    }
 
-  public void setIp(String ip) {
-    this.ip = ip;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getManufacturer() {
-    return manufacturer;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
-  }
+    public String getIp() {
+        return ip;
+    }
 
-  public String getType() {
-    return type;
-  }
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
-  public void setType(String type) {
-    this.type = type;
-  }
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
-  @Override
-  public String toString() {
-    return "Device [ip=" + ip + ", uid=" + uid + ", name=" + name + ", brand=" + brand + ", model="
-        + model + ", sdkVersion=" + sdkVersion + ", androidVersion=" + androidVersion
-        + ", manufacturer=" + manufacturer + ", type=" + type + "]";
-  }
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
-  public static Device newUnauthorizedDevice() {
-    Device device = new Device();
-    device.androidVersion = UNAUTHORIZED;
-    device.sdkVersion = UNAUTHORIZED;
-    device.brand = UNAUTHORIZED;
-    device.name = UNAUTHORIZED;
-    device.model = UNAUTHORIZED;
-    device.manufacturer = UNAUTHORIZED;
-    device.type = UNAUTHORIZED;
+    public String getType() {
+        return type;
+    }
 
-    return device;
-  }
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public DeviceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DeviceStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Device [ip=" + ip + ", uid=" + uid + ", name=" + name + ", brand=" + brand + ", model="
+                + model + ", sdkVersion=" + sdkVersion + ", osVersion=" + osVersion
+                + ", manufacturer=" + manufacturer + ", type=" + type + "]";
+    }
+
+    public static enum DeviceStatus {
+        AVAILABLE, LOCKED, BUSY
+    }
 }

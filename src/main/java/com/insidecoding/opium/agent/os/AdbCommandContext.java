@@ -5,12 +5,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AdbCommandContext {
-  @Bean(name = "appium")
-  public OsCommand windowsTaskKill() {
-    if (System.getProperty("os.name").startsWith("Windows")) {
-      return new AppiumCommandWindows();
-    }
+    @Bean(name = "appium")
+    public OsCommand windowsTaskKill() {
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            return new AppiumCommandWindows();
+        }
 
-    return new AppiumCommandLinux();
-  }
+        return new AppiumCommandLinux();
+    }
 }
