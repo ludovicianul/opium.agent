@@ -1,3 +1,5 @@
+![Java CI](https://github.com/ludovicianul/opium.agent/workflows/Java%20CI/badge.svg?branch=master)
+
 # opium.agent
 The agent used by [Opium](https://github.com/ludovicianul/opium)
 
